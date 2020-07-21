@@ -11,7 +11,7 @@ import Combine
 
 protocol APICallable {
     func listAllBreeds() -> AnyPublisher<DogBreedListResp, APIError>
-    func getSingleDogImageURL(for breed: String, amount: Int) -> AnyPublisher<DogImageResp<String>, APIError>
+    func getSingleDogImageURL(for breed: String) -> AnyPublisher<DogImageResp<String>, APIError>
     func getRandomImageURLs(for breed: String, amount: Int) -> AnyPublisher<DogImageResp<[String]>, APIError>
 }
 
@@ -28,8 +28,8 @@ extension APIClient: APICallable {
         return fetch(with: getAllBreedsURL())
     }
     
-    func getSingleDogImageURL(for breed: String, amount: Int) -> AnyPublisher<DogImageResp<String>, APIError> {
-        return fetch(with: getRandomImagesURL(of: breed, amount: amount))
+    func getSingleDogImageURL(for breed: String) -> AnyPublisher<DogImageResp<String>, APIError> {
+        return fetch(with: getSingleRandomImageURL(of: breed))
     }
     
     func getRandomImageURLs(for breed: String, amount: Int) -> AnyPublisher<DogImageResp<[String]>, APIError> {
@@ -71,11 +71,20 @@ private extension APIClient {
     private struct Routes {
         static let listAllBreeds = "/api/breeds/list/all"
         static let selectedBreed = "/api/breed/"
-        static let randomImages = "/images/random/"
+        static let randomImages = "/images/random"
     }
 
     func getAllBreedsURL() -> URL? {
         let urlString = Domains.baseURL + Routes.listAllBreeds
+        let fullURL = URL(string: urlString)
+        return fullURL
+    }
+    
+    func getSingleRandomImageURL(of breed: String) -> URL? {
+        let urlString = Domains.baseURL
+                        + Routes.selectedBreed
+                        + breed
+                        + Routes.randomImages
         let fullURL = URL(string: urlString)
         return fullURL
     }
@@ -85,7 +94,7 @@ private extension APIClient {
                         + Routes.selectedBreed
                         + breed
                         + Routes.randomImages
-                        + String(amount)
+                        + "/\(amount)"
         let fullURL = URL(string: urlString)
         return fullURL
     }

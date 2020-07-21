@@ -1,0 +1,20 @@
+PODS:
+  - CombineDataSources (0.2.5)
+  - Nuke (8.4.1)
+
+DEPENDENCIES:
+  - CombineDataSources
+  - Nuke
+
+SPEC REPOS:
+  trunk:
+    - CombineDataSources
+    - Nuke
+
+SPEC CHECKSUMS:
+  CombineDataSources: dcbc3b06a038ffdf620b3b4533d3ecaf76ca6a2e
+  Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
+
+PODFILE CHECKSUM: b27d397ed90ed7d83c29bcc8f4216455c0a08e71
+
+COCOAPODS: 1.9.1

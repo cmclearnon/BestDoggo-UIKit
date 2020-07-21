@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct DogBreedListResp: Codable {
+struct DogBreedListResp: Decodable, Hashable {
     let status: String
     let message: [String: [String]]
 }
 
-struct DogImageResp<T: Codable>: Codable {
+struct DogImageResp<T: Decodable>: Decodable {
     let status: String
     let message: T
 }

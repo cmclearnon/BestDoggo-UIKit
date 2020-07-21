@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7F52E7C824C0853D0082BCBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7C724C0853D0082BCBE /* AppDelegate.swift */; };
 		7F52E7CA24C0853D0082BCBE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7C924C0853D0082BCBE /* SceneDelegate.swift */; };
-		7F52E7CC24C0853D0082BCBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7CB24C0853D0082BCBE /* ViewController.swift */; };
+		7F52E7CC24C0853D0082BCBE /* BreedsListVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7CB24C0853D0082BCBE /* BreedsListVIewController.swift */; };
 		7F52E7CF24C0853D0082BCBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F52E7CD24C0853D0082BCBE /* Main.storyboard */; };
 		7F52E7D124C0853F0082BCBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F52E7D024C0853F0082BCBE /* Assets.xcassets */; };
 		7F52E7D424C0853F0082BCBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F52E7D224C0853F0082BCBE /* LaunchScreen.storyboard */; };
@@ -23,6 +23,12 @@
 		7F52E7FC24C0870A0082BCBE /* BreedsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7FB24C0870A0082BCBE /* BreedsListViewModel.swift */; };
 		7F52E7FE24C087300082BCBE /* DogListCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7FD24C087300082BCBE /* DogListCardViewModel.swift */; };
 		7F52E80124C087550082BCBE /* DogGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80024C087550082BCBE /* DogGalleryViewModel.swift */; };
+		7F52E80A24C1E9F60082BCBE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80924C1E9F60082BCBE /* Models.swift */; };
+		7F52E80C24C5EB360082BCBE /* BreedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80B24C5EB360082BCBE /* BreedCollectionCell.swift */; };
+		7F52E80E24C5F3470082BCBE /* BreedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80D24C5F3470082BCBE /* BreedCellViewModel.swift */; };
+		7F52E81024C60C9C0082BCBE /* BreedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80F24C60C9C0082BCBE /* BreedListViewController.swift */; };
+		869288749214EE0C5E3E8F57 /* Pods_BestDoggo_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C432F31E0A583743898C6C /* Pods_BestDoggo_UIKit.framework */; };
+		E01739BCCAD3EBEC66AAE3D8 /* Pods_BestDoggo_UIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 912E4092E638E86CE026C7EB /* Pods_BestDoggo_UIKitTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0530A8768F7BCDB23E450077 /* Pods-BestDoggo-UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestDoggo-UIKit.release.xcconfig"; path = "Target Support Files/Pods-BestDoggo-UIKit/Pods-BestDoggo-UIKit.release.xcconfig"; sourceTree = "<group>"; };
+		36C432F31E0A583743898C6C /* Pods_BestDoggo_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestDoggo_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F52E7C424C0853C0082BCBE /* BestDoggo-UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BestDoggo-UIKit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F52E7C724C0853D0082BCBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F52E7C924C0853D0082BCBE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7F52E7CB24C0853D0082BCBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7F52E7CB24C0853D0082BCBE /* BreedsListVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListVIewController.swift; sourceTree = "<group>"; };
 		7F52E7CE24C0853D0082BCBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F52E7D024C0853F0082BCBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F52E7D324C0853F0082BCBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +64,14 @@
 		7F52E7FB24C0870A0082BCBE /* BreedsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListViewModel.swift; sourceTree = "<group>"; };
 		7F52E7FD24C087300082BCBE /* DogListCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogListCardViewModel.swift; sourceTree = "<group>"; };
 		7F52E80024C087550082BCBE /* DogGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogGalleryViewModel.swift; sourceTree = "<group>"; };
+		7F52E80924C1E9F60082BCBE /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		7F52E80B24C5EB360082BCBE /* BreedCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCollectionCell.swift; sourceTree = "<group>"; };
+		7F52E80D24C5F3470082BCBE /* BreedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCellViewModel.swift; sourceTree = "<group>"; };
+		7F52E80F24C60C9C0082BCBE /* BreedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedListViewController.swift; sourceTree = "<group>"; };
+		912E4092E638E86CE026C7EB /* Pods_BestDoggo_UIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestDoggo_UIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B100F70F5F25D3D760AA029A /* Pods-BestDoggo-UIKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestDoggo-UIKitTests.release.xcconfig"; path = "Target Support Files/Pods-BestDoggo-UIKitTests/Pods-BestDoggo-UIKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		B98231D909F3B2762B57F3FC /* Pods-BestDoggo-UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestDoggo-UIKit.debug.xcconfig"; path = "Target Support Files/Pods-BestDoggo-UIKit/Pods-BestDoggo-UIKit.debug.xcconfig"; sourceTree = "<group>"; };
+		D75EB3DC028FB142567B0F76 /* Pods-BestDoggo-UIKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestDoggo-UIKitTests.debug.xcconfig"; path = "Target Support Files/Pods-BestDoggo-UIKitTests/Pods-BestDoggo-UIKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869288749214EE0C5E3E8F57 /* Pods_BestDoggo_UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,18 +87,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E01739BCCAD3EBEC66AAE3D8 /* Pods_BestDoggo_UIKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DD0D60E42D2E153941DAE30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				36C432F31E0A583743898C6C /* Pods_BestDoggo_UIKit.framework */,
+				912E4092E638E86CE026C7EB /* Pods_BestDoggo_UIKitTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7F52E7BB24C0853C0082BCBE = {
 			isa = PBXGroup;
 			children = (
 				7F52E7C624C0853C0082BCBE /* BestDoggo-UIKit */,
 				7F52E7DD24C0853F0082BCBE /* BestDoggo-UIKitTests */,
 				7F52E7C524C0853C0082BCBE /* Products */,
+				A41D4DE6494C02DF2B015E18 /* Pods */,
+				0DD0D60E42D2E153941DAE30 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,8 +130,6 @@
 				7F52E7E924C085820082BCBE /* Utilities */,
 				7F52E7C724C0853D0082BCBE /* AppDelegate.swift */,
 				7F52E7C924C0853D0082BCBE /* SceneDelegate.swift */,
-				7F52E7CB24C0853D0082BCBE /* ViewController.swift */,
-				7F52E7CD24C0853D0082BCBE /* Main.storyboard */,
 				7F52E7D024C0853F0082BCBE /* Assets.xcassets */,
 				7F52E7D224C0853F0082BCBE /* LaunchScreen.storyboard */,
 				7F52E7D524C0853F0082BCBE /* Info.plist */,
@@ -153,6 +180,7 @@
 				7F52E7F124C0863F0082BCBE /* APIError.swift */,
 				7F52E7F324C086560082BCBE /* APIClient.swift */,
 				7F52E7F824C086BE0082BCBE /* Responses.swift */,
+				7F52E80924C1E9F60082BCBE /* Models.swift */,
 			);
 			path = DogAPI;
 			sourceTree = "<group>";
@@ -168,6 +196,12 @@
 		7F52E7FA24C086F50082BCBE /* BreedsList */ = {
 			isa = PBXGroup;
 			children = (
+				7F52E80B24C5EB360082BCBE /* BreedCollectionCell.swift */,
+				7F52E80D24C5F3470082BCBE /* BreedCellViewModel.swift */,
+				7F52E80F24C60C9C0082BCBE /* BreedListViewController.swift */,
+				7F52E7CB24C0853D0082BCBE /* BreedsListVIewController.swift */,
+				7F52E7CD24C0853D0082BCBE /* Main.storyboard */,
+				7F52E80424C094820082BCBE /* Cells */,
 				7F52E7FB24C0870A0082BCBE /* BreedsListViewModel.swift */,
 				7F52E7FD24C087300082BCBE /* DogListCardViewModel.swift */,
 			);
@@ -182,6 +216,24 @@
 			path = DogGallery;
 			sourceTree = "<group>";
 		};
+		7F52E80424C094820082BCBE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A41D4DE6494C02DF2B015E18 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B98231D909F3B2762B57F3FC /* Pods-BestDoggo-UIKit.debug.xcconfig */,
+				0530A8768F7BCDB23E450077 /* Pods-BestDoggo-UIKit.release.xcconfig */,
+				D75EB3DC028FB142567B0F76 /* Pods-BestDoggo-UIKitTests.debug.xcconfig */,
+				B100F70F5F25D3D760AA029A /* Pods-BestDoggo-UIKitTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F52E7E324C0853F0082BCBE /* Build configuration list for PBXNativeTarget "BestDoggo-UIKit" */;
 			buildPhases = (
+				E8800C15A1F6DB801CA57DF9 /* [CP] Check Pods Manifest.lock */,
 				7F52E7C024C0853C0082BCBE /* Sources */,
 				7F52E7C124C0853C0082BCBE /* Frameworks */,
 				7F52E7C224C0853C0082BCBE /* Resources */,
+				766D62B9B2E43D894B5DE954 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,6 +260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F52E7E624C0853F0082BCBE /* Build configuration list for PBXNativeTarget "BestDoggo-UIKitTests" */;
 			buildPhases = (
+				E4E1F5CB731417C56216F56D /* [CP] Check Pods Manifest.lock */,
 				7F52E7D624C0853F0082BCBE /* Sources */,
 				7F52E7D724C0853F0082BCBE /* Frameworks */,
 				7F52E7D824C0853F0082BCBE /* Resources */,
@@ -278,23 +333,91 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		766D62B9B2E43D894B5DE954 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BestDoggo-UIKit/Pods-BestDoggo-UIKit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BestDoggo-UIKit/Pods-BestDoggo-UIKit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BestDoggo-UIKit/Pods-BestDoggo-UIKit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4E1F5CB731417C56216F56D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BestDoggo-UIKitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8800C15A1F6DB801CA57DF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BestDoggo-UIKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7F52E7C024C0853C0082BCBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7F52E7F924C086BE0082BCBE /* Responses.swift in Sources */,
-				7F52E7CC24C0853D0082BCBE /* ViewController.swift in Sources */,
+				7F52E7CC24C0853D0082BCBE /* BreedsListVIewController.swift in Sources */,
 				7F52E80124C087550082BCBE /* DogGalleryViewModel.swift in Sources */,
 				7F52E7F424C086560082BCBE /* APIClient.swift in Sources */,
 				7F52E7EC24C0859F0082BCBE /* String+Capitalisation.swift in Sources */,
+				7F52E81024C60C9C0082BCBE /* BreedListViewController.swift in Sources */,
 				7F52E7EE24C085BA0082BCBE /* Sequence+2DArray.swift in Sources */,
 				7F52E7F724C086710082BCBE /* Parsing.swift in Sources */,
+				7F52E80C24C5EB360082BCBE /* BreedCollectionCell.swift in Sources */,
 				7F52E7C824C0853D0082BCBE /* AppDelegate.swift in Sources */,
 				7F52E7FC24C0870A0082BCBE /* BreedsListViewModel.swift in Sources */,
 				7F52E7CA24C0853D0082BCBE /* SceneDelegate.swift in Sources */,
 				7F52E7F224C0863F0082BCBE /* APIError.swift in Sources */,
 				7F52E7FE24C087300082BCBE /* DogListCardViewModel.swift in Sources */,
+				7F52E80A24C1E9F60082BCBE /* Models.swift in Sources */,
+				7F52E80E24C5F3470082BCBE /* BreedCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +575,7 @@
 		};
 		7F52E7E424C0853F0082BCBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B98231D909F3B2762B57F3FC /* Pods-BestDoggo-UIKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,12 +588,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chrismclearnon.BestDoggo-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		7F52E7E524C0853F0082BCBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0530A8768F7BCDB23E450077 /* Pods-BestDoggo-UIKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -482,12 +607,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.chrismclearnon.BestDoggo-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		7F52E7E724C0853F0082BCBE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D75EB3DC028FB142567B0F76 /* Pods-BestDoggo-UIKitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +636,7 @@
 		};
 		7F52E7E824C0853F0082BCBE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B100F70F5F25D3D760AA029A /* Pods-BestDoggo-UIKitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

@@ -70,15 +70,20 @@ class BreedCollectionCell: UICollectionViewCell {
         nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
     
-    func setup() {
+    func setup(with value: String?) {
         /// Validate that the imageURL string is not nil
         /// If so then use placeholderURL
-        viewModel.didChange.sink(receiveValue: { value in
-            if let url = value {
-                self.imageURL = url
-            } else {
-                self.imageURL = NetworkConstants.placeholderURL
-            }
-        }).store(in: &subscribers)
+//        viewModel.didChange.sink(receiveValue: { value in
+//            if let url = value {
+//                self.imageURL = url
+//            } else {
+//                self.imageURL = NetworkConstants.placeholderURL
+//            }
+//        }).store(in: &subscribers)
+        if let url = value {
+            self.imageURL = url
+        } else {
+            self.imageURL = NetworkConstants.placeholderURL
+        }
     }
 }

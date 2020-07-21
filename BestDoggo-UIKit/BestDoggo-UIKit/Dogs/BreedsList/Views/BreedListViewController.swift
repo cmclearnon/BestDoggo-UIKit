@@ -10,25 +10,19 @@ import Foundation
 import UIKit
 import Combine
 import CombineDataSources
-import Nuke
 
-enum Section {
-    case main
-}
-
-class BreedListViewController: UIViewController, UICollectionViewDelegate {
+class BreedListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     private var viewModel: BreedsListViewModel!
+    var sharedAPIClientInstance = APIClient()
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 374, height: 300)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(BreedCollectionCell.self, forCellWithReuseIdentifier: "cell")
-        cv.collectionViewLayout = layout
         return cv
     }()
     
@@ -49,7 +43,7 @@ class BreedListViewController: UIViewController, UICollectionViewDelegate {
     
     func setupViews() {
         view.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
@@ -57,6 +51,10 @@ class BreedListViewController: UIViewController, UICollectionViewDelegate {
 }
 
 extension BreedListViewController {
+    
+    /// CombineDataSources library:
+    /// Collection View subscribes to the view model and populates
+    /// cells with data when it is set in the view model
     fileprivate func setupDatasource() {
         viewModel.didChange
             .map{ $0 }
@@ -68,6 +66,14 @@ extension BreedListViewController {
                 cell.layer.cornerRadius = 25
             }))
         self.collectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 300)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(30)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

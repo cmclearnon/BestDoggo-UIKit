@@ -16,17 +16,13 @@ class BreedCellViewModel {
         }
     }
     @Published var isLoading: Bool = false
-    
-    private let client: APIClient
-    
-    var breed: String
-    
     var didChange = PassthroughSubject<String?, Never>()
-    
-    var urlTask: AnyCancellable?
+
+    var breed: String
+    private let client: APIClient
     private var subscribers = Set<AnyCancellable>()
     
-    init(breed: String, client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedListCollectionViewCellViewModel")) {
+    init(breed: String, client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedCellViewModelThread")) {
         self.client = client
         self.breed = breed
         fetchURLList()

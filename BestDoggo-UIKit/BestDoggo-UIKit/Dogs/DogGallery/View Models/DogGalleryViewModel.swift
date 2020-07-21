@@ -35,7 +35,7 @@ class DogGalleryViewModel: ObservableObject {
         isLoading = true
         client.getRandomImageURLs(for: breed, amount: 10)
             .mapError({ (error) -> APIError in
-                return .network(description: "Error fetching image URL")
+                return .network(description: "Error fetching image URL from API")
             })
             .map(\.message)
             .receive(on: DispatchQueue.main)
@@ -51,7 +51,6 @@ class DogGalleryViewModel: ObservableObject {
                 },
                 receiveValue: { [weak self] urls in
                     guard let self = self else { return }
-//                    self.imageURLList = urls.clump(by: 2)
                     self.imageURLList = urls
                     self.isLoading = false
             }).store(in: &subscribers)

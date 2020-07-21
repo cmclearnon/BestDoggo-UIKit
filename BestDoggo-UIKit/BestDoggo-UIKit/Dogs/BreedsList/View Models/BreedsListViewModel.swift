@@ -15,25 +15,16 @@ class BreedsListViewModel: ObservableObject, Identifiable {
             didChange.send(dogList ?? [])
         }
     }
-    var currentVMData = CurrentValueSubject<[String], Never>([])
 
     let didChange = PassthroughSubject<[String], Never>()
-//    @Published var dogList: [Breed]? {
-//        didSet {
-//            didChange.send(dogList ?? [])
-//        }
-//    }
-//    var currentVMData = CurrentValueSubject<[Breed], Never>([])
-//
-//    let didChange = PassthroughSubject<[Breed], Never>()
-    
-    private let client: APIClient
     
     /// A collection of network requests
     /// Keeping these references allows for network requests to remain alive
     private var disposables = Set<AnyCancellable>()
     
-    init(client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedsListViewModel")) {
+    private let client: APIClient
+    
+    init(client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedListViewModelThread")) {
         self.client = client
         self.fetchDogBreeds()
     }
@@ -41,7 +32,7 @@ class BreedsListViewModel: ObservableObject, Identifiable {
     func fetchDogBreeds() {
         client.listAllBreeds()
             .mapError({ (error) -> APIError in
-                return .network(description: "Error fetching breed list")
+                return .network(description: "Error fetching breed list from API")
             })
             .map(\.message.keys)
             .receive(on: DispatchQueue.main)
@@ -58,30 +49,6 @@ class BreedsListViewModel: ObservableObject, Identifiable {
                 receiveValue: { [weak self] dogs in
                     guard let self = self else { return }
                     self.dogList = Array(dogs)
-                    self.currentVMData.send(Array(dogs))
             }).store(in: &disposables)
     }
-//    
-//
-//    func fetchBreedImageURLs(for breed: String) {
-//        client.getSingleDogImageURL(for: breed)
-//            .mapError({ (error) -> APIError in
-//                return .network(description: "Error fetching breed image URL")
-//            })
-//            .map(\.message)
-//            .receive(on: DispatchQueue.main)
-//            .sink(receiveCompletion: { [weak self] value in
-//                guard let self = self else { return }
-//                switch value {
-//                case .failure:
-//                    self.dogList = []
-//                case .finished:
-//                    break
-//                }
-//            }, receiveValue: { [weak self] urlString in
-//                    guard let self = self else { return }
-//                    self.dogList = Array(dogs)
-//                    self.currentVMData.send(Array(dogs))
-//            })
-//    }
 }

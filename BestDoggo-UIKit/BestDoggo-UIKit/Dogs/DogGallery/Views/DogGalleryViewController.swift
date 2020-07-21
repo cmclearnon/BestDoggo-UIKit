@@ -20,8 +20,17 @@ class DogGalleryViewController: UIViewController, UICollectionViewDelegate, UICo
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(DogGalleryCell.self, forCellWithReuseIdentifier: "cell")
-        cv.collectionViewLayout = layout
         return cv
+    }()
+    
+    fileprivate let refreshButton: UIButton = {
+        let button = RoundedButton()
+        button.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        button.setTitle("Refresh", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(refreshPressed(sender:)), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override func viewDidLoad() {
@@ -29,33 +38,36 @@ class DogGalleryViewController: UIViewController, UICollectionViewDelegate, UICo
 
         // Do any additional setup after loading the view.
         self.viewModel = DogGalleryViewModel(breed: breed, client: APIClient())
+        self.collectionView.delegate = self
         setupViews()
         setupDataSource()
-        self.collectionView.delegate = self
+    }
+    
+    @objc func refreshPressed(sender: UIButton!) {
+        self.viewModel.fetchImageURLs()
     }
     
     func setupViews() {
         view.addSubview(collectionView)
+        view.addSubview(refreshButton)
+        
         collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: refreshButton.topAnchor, constant: -10).isActive = true
+        
+        refreshButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        refreshButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        refreshButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        refreshButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension DogGalleryViewController {
+    
+    /// CombineDataSources library:
+    /// Collection View subscribes to the view model and populates
+    /// cells with data when it is set in the view model
     func setupDataSource() {
         viewModel.didChange
             .map{ $0 }
@@ -63,10 +75,12 @@ extension DogGalleryViewController {
                 cell.backgroundColor = #colorLiteral(red: 0.120877615, green: 0.1208335194, blue: 0.1312041219, alpha: 1)
                 cell.layer.cornerRadius = 25
                 
+                /// Validate that the imageURL string is not nil
+                /// If so then use placeholderURL
                 if let url = imageURL {
                     cell.imageURL = url
                 } else {
-                    cell.imageURL = "https://complianz.io/wp-content/uploads/2019/03/placeholder-300x202.jpg"
+                    cell.imageURL = NetworkConstants.placeholderURL
                 }
             }))
     }

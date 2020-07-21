@@ -21,7 +21,6 @@
 		7F52E7F924C086BE0082BCBE /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7F824C086BE0082BCBE /* Responses.swift */; };
 		7F52E7FC24C0870A0082BCBE /* BreedsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E7FB24C0870A0082BCBE /* BreedsListViewModel.swift */; };
 		7F52E80124C087550082BCBE /* DogGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80024C087550082BCBE /* DogGalleryViewModel.swift */; };
-		7F52E80A24C1E9F60082BCBE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80924C1E9F60082BCBE /* Models.swift */; };
 		7F52E80C24C5EB360082BCBE /* BreedCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80B24C5EB360082BCBE /* BreedCollectionCell.swift */; };
 		7F52E80E24C5F3470082BCBE /* BreedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80D24C5F3470082BCBE /* BreedCellViewModel.swift */; };
 		7F52E81024C60C9C0082BCBE /* BreedListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E80F24C60C9C0082BCBE /* BreedListViewController.swift */; };
@@ -65,7 +64,6 @@
 		7F52E7F824C086BE0082BCBE /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
 		7F52E7FB24C0870A0082BCBE /* BreedsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListViewModel.swift; sourceTree = "<group>"; };
 		7F52E80024C087550082BCBE /* DogGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogGalleryViewModel.swift; sourceTree = "<group>"; };
-		7F52E80924C1E9F60082BCBE /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		7F52E80B24C5EB360082BCBE /* BreedCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCollectionCell.swift; sourceTree = "<group>"; };
 		7F52E80D24C5F3470082BCBE /* BreedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedCellViewModel.swift; sourceTree = "<group>"; };
 		7F52E80F24C60C9C0082BCBE /* BreedListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedListViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 				7F52E7F124C0863F0082BCBE /* APIError.swift */,
 				7F52E7F324C086560082BCBE /* APIClient.swift */,
 				7F52E7F824C086BE0082BCBE /* Responses.swift */,
-				7F52E80924C1E9F60082BCBE /* Models.swift */,
 				7F606E6D24C6FAF800BCB1FD /* NetworkConstants.swift */,
 			);
 			path = DogAPI;
@@ -476,7 +473,6 @@
 				7F52E7FC24C0870A0082BCBE /* BreedsListViewModel.swift in Sources */,
 				7F52E7CA24C0853D0082BCBE /* SceneDelegate.swift in Sources */,
 				7F52E7F224C0863F0082BCBE /* APIError.swift in Sources */,
-				7F52E80A24C1E9F60082BCBE /* Models.swift in Sources */,
 				7F52E80E24C5F3470082BCBE /* BreedCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

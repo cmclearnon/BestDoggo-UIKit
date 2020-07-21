@@ -1,5 +1,5 @@
 //
-//  DogListCardViewModel.swift
+//  DogGalleryViewModel.swift
 //  BestDoggo-UIKit
 //
 //  Created by Chris McLearnon on 16/07/2020.
@@ -9,25 +9,31 @@
 import Foundation
 import Combine
 
-class DogListCardViewModel: ObservableObject {
-    @Published var urlString: String = ""
+class DogGalleryViewModel: ObservableObject {
+    @Published var imageURLList: [String?]? {
+        didSet {
+            didChange.send(imageURLList ?? [])
+        }
+    }
+    
+    var breed: String!
     @Published var isLoading: Bool = false
+    
+    let didChange = PassthroughSubject<[String?], Never>()
     
     private let client: APIClient
     
-    var breed: String
+    private var subscribers = Set<AnyCancellable>()
     
-    var urlTask: AnyCancellable?
-    
-    init(breed: String, client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "DogListCardViewModel")) {
+    init(breed: String, client: APIClient) {
         self.client = client
         self.breed = breed
-        fetchURLList()
+        self.fetchImageURLs()
     }
     
-    func fetchURLList() {
+    func fetchImageURLs() {
         isLoading = true
-        urlTask = client.getSingleDogImageURL(for: breed)
+        client.getRandomImageURLs(for: breed, amount: 10)
             .mapError({ (error) -> APIError in
                 return .network(description: "Error fetching image URL")
             })
@@ -38,15 +44,16 @@ class DogListCardViewModel: ObservableObject {
                     guard let self = self else { return }
                     switch value {
                     case .failure:
-                        self.urlString = ""
+                        self.imageURLList = []
                     case .finished:
                         break
                     }
                 },
-                receiveValue: { [weak self] url in
+                receiveValue: { [weak self] urls in
                     guard let self = self else { return }
-                    self.urlString = url
+//                    self.imageURLList = urls.clump(by: 2)
+                    self.imageURLList = urls
                     self.isLoading = false
-            })
+            }).store(in: &subscribers)
     }
 }

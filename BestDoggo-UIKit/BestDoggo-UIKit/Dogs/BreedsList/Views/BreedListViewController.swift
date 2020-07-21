@@ -12,13 +12,13 @@ import Combine
 import CombineDataSources
 import Nuke
 
-//enum Section {
-//    case main
-//}
+enum Section {
+    case main
+}
 
-class BreedListViewController: UIViewController {
+class BreedListViewController: UIViewController, UICollectionViewDelegate {
+    
     private var viewModel: BreedsListViewModel!
-    var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     fileprivate let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -44,6 +44,7 @@ class BreedListViewController: UIViewController {
         view.addSubview(collectionView)
         setupViews()
         self.setupDatasource()
+        self.collectionView.delegate = self
     }
     
     func setupViews() {
@@ -69,11 +70,11 @@ extension BreedListViewController {
         self.collectionView.reloadData()
     }
     
-    fileprivate func createSnapshot(_ breeds: [String]) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DogGalleryView", bundle: nil)
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(breeds)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Gallery") as! DogGalleryViewController
+        vc.breed = viewModel.dogList?[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

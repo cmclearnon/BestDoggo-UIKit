@@ -34,13 +34,6 @@ class BreedCollectionCell: UICollectionViewCell {
         return image
     }()
     
-    let bottomSeparatorView: UIView = {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.3294117647, green: 0.3294117647, blue: 0.3450980392, alpha: 0.6)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
@@ -73,7 +66,6 @@ class BreedCollectionCell: UICollectionViewCell {
         cellImage.bottomAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -20).isActive = true
         
         nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
-//        nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo:contentView.trailingAnchor, constant: -10).isActive = true
         nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
@@ -81,7 +73,11 @@ class BreedCollectionCell: UICollectionViewCell {
     func setup() {
         print("Setup")
         viewModel.didChange.sink(receiveValue: { value in
-            self.imageURL = value
+            if let url = value {
+                self.imageURL = url
+            } else {
+                self.imageURL = self.baseURL
+            }
             print("Setting URL")
         }).store(in: &subscribers)
     }

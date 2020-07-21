@@ -16,7 +16,6 @@ protocol APICallable {
 }
 
 class APIClient {
-    let sharedInstance = APIClient()
     private let session: URLSession
     
     init(session: URLSession = .shared) {

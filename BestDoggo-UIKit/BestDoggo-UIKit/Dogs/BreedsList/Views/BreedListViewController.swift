@@ -34,7 +34,7 @@ class BreedListViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        self.viewModel = BreedsListViewModel(client: APIClient())
+        self.viewModel = BreedsListViewModel(client: sharedAPIClientInstance)
         view.addSubview(collectionView)
         setupViews()
         self.setupDatasource()
@@ -60,7 +60,7 @@ extension BreedListViewController {
             .map{ $0 }
             .subscribe(collectionView.itemsSubscriber(cellIdentifier: "cell", cellType: BreedCollectionCell.self, cellConfig: { cell, indexPath, breed in
                 cell.backgroundColor = #colorLiteral(red: 0.120877615, green: 0.1208335194, blue: 0.1312041219, alpha: 1)
-                let cellViewModel = BreedCellViewModel(breed: breed, client: APIClient())
+                let cellViewModel = BreedCellViewModel(breed: breed, client: self.sharedAPIClientInstance)
                 cell.viewModel = cellViewModel
                 cell.setup()
                 cell.layer.cornerRadius = 25

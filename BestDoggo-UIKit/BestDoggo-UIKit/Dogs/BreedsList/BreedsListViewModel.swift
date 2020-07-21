@@ -10,7 +10,22 @@ import Foundation
 import Combine
 
 class BreedsListViewModel: ObservableObject, Identifiable {
-    @Published var dogList: [String] = []
+    @Published var dogList: [String]? {
+        didSet {
+            didChange.send(dogList ?? [])
+        }
+    }
+    var currentVMData = CurrentValueSubject<[String], Never>([])
+
+    let didChange = PassthroughSubject<[String], Never>()
+//    @Published var dogList: [Breed]? {
+//        didSet {
+//            didChange.send(dogList ?? [])
+//        }
+//    }
+//    var currentVMData = CurrentValueSubject<[Breed], Never>([])
+//
+//    let didChange = PassthroughSubject<[Breed], Never>()
     
     private let client: APIClient
     
@@ -20,7 +35,7 @@ class BreedsListViewModel: ObservableObject, Identifiable {
     
     init(client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedsListViewModel")) {
         self.client = client
-        fetchDogBreeds()
+        self.fetchDogBreeds()
     }
     
     func fetchDogBreeds() {
@@ -43,6 +58,30 @@ class BreedsListViewModel: ObservableObject, Identifiable {
                 receiveValue: { [weak self] dogs in
                     guard let self = self else { return }
                     self.dogList = Array(dogs)
+                    self.currentVMData.send(Array(dogs))
             }).store(in: &disposables)
     }
+//    
+//
+//    func fetchBreedImageURLs(for breed: String) {
+//        client.getSingleDogImageURL(for: breed)
+//            .mapError({ (error) -> APIError in
+//                return .network(description: "Error fetching breed image URL")
+//            })
+//            .map(\.message)
+//            .receive(on: DispatchQueue.main)
+//            .sink(receiveCompletion: { [weak self] value in
+//                guard let self = self else { return }
+//                switch value {
+//                case .failure:
+//                    self.dogList = []
+//                case .finished:
+//                    break
+//                }
+//            }, receiveValue: { [weak self] urlString in
+//                    guard let self = self else { return }
+//                    self.dogList = Array(dogs)
+//                    self.currentVMData.send(Array(dogs))
+//            })
+//    }
 }

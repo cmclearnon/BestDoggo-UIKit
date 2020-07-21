@@ -28,6 +28,8 @@
 		7F52E81224C6C7250082BCBE /* DogGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E81124C6C7250082BCBE /* DogGalleryViewController.swift */; };
 		7F52E81424C6CF4B0082BCBE /* DogGalleryView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F52E81324C6CF4B0082BCBE /* DogGalleryView.storyboard */; };
 		7F52E81724C6D2730082BCBE /* DogGalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E81624C6D2730082BCBE /* DogGalleryCell.swift */; };
+		7F606E6E24C6FAF800BCB1FD /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F606E6D24C6FAF800BCB1FD /* NetworkConstants.swift */; };
+		7FC5D48F24C6EA6900F303E8 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC5D48E24C6EA6900F303E8 /* RoundedButton.swift */; };
 		869288749214EE0C5E3E8F57 /* Pods_BestDoggo_UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C432F31E0A583743898C6C /* Pods_BestDoggo_UIKit.framework */; };
 		E01739BCCAD3EBEC66AAE3D8 /* Pods_BestDoggo_UIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 912E4092E638E86CE026C7EB /* Pods_BestDoggo_UIKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		7F52E81124C6C7250082BCBE /* DogGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogGalleryViewController.swift; sourceTree = "<group>"; };
 		7F52E81324C6CF4B0082BCBE /* DogGalleryView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DogGalleryView.storyboard; sourceTree = "<group>"; };
 		7F52E81624C6D2730082BCBE /* DogGalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogGalleryCell.swift; sourceTree = "<group>"; };
+		7F606E6D24C6FAF800BCB1FD /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		7FC5D48E24C6EA6900F303E8 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		912E4092E638E86CE026C7EB /* Pods_BestDoggo_UIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestDoggo_UIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B100F70F5F25D3D760AA029A /* Pods-BestDoggo-UIKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestDoggo-UIKitTests.release.xcconfig"; path = "Target Support Files/Pods-BestDoggo-UIKitTests/Pods-BestDoggo-UIKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		B98231D909F3B2762B57F3FC /* Pods-BestDoggo-UIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestDoggo-UIKit.debug.xcconfig"; path = "Target Support Files/Pods-BestDoggo-UIKit/Pods-BestDoggo-UIKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				7F52E7F324C086560082BCBE /* APIClient.swift */,
 				7F52E7F824C086BE0082BCBE /* Responses.swift */,
 				7F52E80924C1E9F60082BCBE /* Models.swift */,
+				7F606E6D24C6FAF800BCB1FD /* NetworkConstants.swift */,
 			);
 			path = DogAPI;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 		7FB5EF4924C6D8DD001B6AA8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7FC5D49024C6EB9700F303E8 /* Button */,
 				7F52E81124C6C7250082BCBE /* DogGalleryViewController.swift */,
 				7F52E81324C6CF4B0082BCBE /* DogGalleryView.storyboard */,
 			);
@@ -264,6 +270,14 @@
 				7F52E80024C087550082BCBE /* DogGalleryViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		7FC5D49024C6EB9700F303E8 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				7FC5D48E24C6EA6900F303E8 /* RoundedButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		A41D4DE6494C02DF2B015E18 /* Pods */ = {
@@ -446,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F606E6E24C6FAF800BCB1FD /* NetworkConstants.swift in Sources */,
 				7F52E7F924C086BE0082BCBE /* Responses.swift in Sources */,
 				7F52E80124C087550082BCBE /* DogGalleryViewModel.swift in Sources */,
 				7F52E7F424C086560082BCBE /* APIClient.swift in Sources */,
@@ -457,6 +472,7 @@
 				7F52E80C24C5EB360082BCBE /* BreedCollectionCell.swift in Sources */,
 				7F52E81224C6C7250082BCBE /* DogGalleryViewController.swift in Sources */,
 				7F52E7C824C0853D0082BCBE /* AppDelegate.swift in Sources */,
+				7FC5D48F24C6EA6900F303E8 /* RoundedButton.swift in Sources */,
 				7F52E7FC24C0870A0082BCBE /* BreedsListViewModel.swift in Sources */,
 				7F52E7CA24C0853D0082BCBE /* SceneDelegate.swift in Sources */,
 				7F52E7F224C0863F0082BCBE /* APIError.swift in Sources */,

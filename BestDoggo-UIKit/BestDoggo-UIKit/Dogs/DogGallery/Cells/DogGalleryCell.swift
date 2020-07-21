@@ -10,6 +10,8 @@ import UIKit
 import Nuke
 
 class DogGalleryCell: UICollectionViewCell {
+    
+    /// Once imageURL is assigned a value load image into the cell
     var imageURL: String! {
         didSet {
             Nuke.loadImage(with: URL(string: imageURL)!, into: cellImage)

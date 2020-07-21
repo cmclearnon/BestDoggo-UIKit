@@ -11,7 +11,6 @@ import Combine
 import Nuke
 
 class BreedCollectionCell: UICollectionViewCell {
-    var baseURL = "https://complianz.io/wp-content/uploads/2019/03/placeholder-300x202.jpg"
     var subscribers = Set<AnyCancellable>()
     var viewModel: BreedCellViewModel! {
         didSet {
@@ -19,9 +18,9 @@ class BreedCollectionCell: UICollectionViewCell {
         }
     }
     
+    /// Once imageURL is assigned a value load image into the cell
     var imageURL: String! {
         didSet {
-            print("URL HAS BEEN SET")
             Nuke.loadImage(with: URL(string: imageURL)!, into: self.cellImage)
         }
     }
@@ -53,7 +52,8 @@ class BreedCollectionCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        nameLabel.text = ""
+        nameLabel.text = nil
+        cellImage.image = nil
     }
     
     func addSubviews() {
@@ -71,14 +71,14 @@ class BreedCollectionCell: UICollectionViewCell {
     }
     
     func setup() {
-        print("Setup")
+        /// Validate that the imageURL string is not nil
+        /// If so then use placeholderURL
         viewModel.didChange.sink(receiveValue: { value in
             if let url = value {
                 self.imageURL = url
             } else {
-                self.imageURL = self.baseURL
+                self.imageURL = NetworkConstants.placeholderURL
             }
-            print("Setting URL")
         }).store(in: &subscribers)
     }
 }

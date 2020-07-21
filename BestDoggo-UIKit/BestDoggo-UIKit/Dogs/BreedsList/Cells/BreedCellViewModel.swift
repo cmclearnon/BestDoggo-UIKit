@@ -1,32 +1,40 @@
 //
-//  DogGalleryViewModel.swift
+//  BreedListCollectionViewCellViewModel.swift
 //  BestDoggo-UIKit
 //
-//  Created by Chris McLearnon on 16/07/2020.
+//  Created by Chris McLearnon on 20/07/2020.
 //  Copyright © 2020 chrismclearnon. All rights reserved.
 //
 
 import Foundation
 import Combine
 
-class DogGalleryViewModel: ObservableObject {
-    @Published var imageURLList: [[String]] = []
-    @Published var breed: String
+class BreedCellViewModel {
+    @Published var urlString: String? {
+        didSet {
+            didChange.send(urlString ?? "")
+        }
+    }
     @Published var isLoading: Bool = false
     
     private let client: APIClient
     
-    private var urlTask: AnyCancellable?
+    var breed: String
     
-    init(breed: String, client: APIClient) {
+    var didChange = PassthroughSubject<String?, Never>()
+    
+    var urlTask: AnyCancellable?
+    private var subscribers = Set<AnyCancellable>()
+    
+    init(breed: String, client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedListCollectionViewCellViewModel")) {
         self.client = client
         self.breed = breed
-        fetchImageURLs()
+        fetchURLList()
     }
     
-    func fetchImageURLs() {
+    func fetchURLList() {
         isLoading = true
-        urlTask = client.getRandomImageURLs(for: breed, amount: 10)
+        client.getSingleDogImageURL(for: breed)
             .mapError({ (error) -> APIError in
                 return .network(description: "Error fetching image URL")
             })
@@ -37,15 +45,21 @@ class DogGalleryViewModel: ObservableObject {
                     guard let self = self else { return }
                     switch value {
                     case .failure:
-                        self.imageURLList = []
+                        self.urlString = ""
                     case .finished:
                         break
                     }
                 },
-                receiveValue: { [weak self] urls in
+                receiveValue: { [weak self] url in
                     guard let self = self else { return }
-                    self.imageURLList = urls.clump(by: 2)
+                    self.urlString = url
                     self.isLoading = false
-            })
+            }).store(in: &subscribers)
+    }
+    
+    deinit {
+        for subscriber in subscribers {
+            subscriber.cancel()
+        }
     }
 }

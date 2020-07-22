@@ -16,14 +16,14 @@ class BreedsListViewModel: ObservableObject, Identifiable {
         }
     }
     
-    @Published var dogsFullList: [String: String]? {
+    @Published var dogsFullList: [Breed]? {
         didSet {
-            fullListDidChange.send(dogsFullList ?? [:])
+            fullListDidChange.send(dogsFullList ?? [])
         }
     }
 
     let didChange = PassthroughSubject<[String], Never>()
-    let fullListDidChange = PassthroughSubject<[String: String], Never>()
+    let fullListDidChange = PassthroughSubject<[Breed], Never>()
     
     /// A collection of network requests
     /// Keeping these references allows for network requests to remain alive
@@ -34,7 +34,6 @@ class BreedsListViewModel: ObservableObject, Identifiable {
     init(client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedListViewModelThread")) {
         self.client = client
         self.fetchDogBreeds()
-//        self.fetchSingleImageURLs()
     }
     
     func fetchDogBreeds() {
@@ -64,18 +63,17 @@ class BreedsListViewModel: ObservableObject, Identifiable {
     func fetchSingleImageURLs() {
         fetch(completionHandler: { (newList, err)  in
             guard let fullList = newList else {
-                self.dogsFullList = [:]
+                self.dogsFullList = []
                 return
             }
-            print("Full list: \(fullList)")
-            self.dogsFullList = newList
+            self.dogsFullList = fullList
         })
     }
     
     /// Asynchronous loop for fetching single image URL for each breed
-    /// Creates full [String: String] dictionary for breeds and their image URLs
-    func fetch(completionHandler: @escaping ([String: String]?, Error?) -> Void) {
-        var list: [String: String] = [:]
+    /// Creates full [Breed] list for breeds and their image URLs
+    func fetch(completionHandler: @escaping ([Breed]?, Error?) -> Void) {
+        var list: [Breed] = []
         
         /// Worker group synchronising for calling completionHandler after all loops have finished
         let group = DispatchGroup()
@@ -91,14 +89,21 @@ class BreedsListViewModel: ObservableObject, Identifiable {
                     guard self != nil else { return }
                     switch value {
                     case .failure:
-                        list[dog] = NetworkConstants.placeholderURL
+                        let newBreed = Breed(name: dog, imageURL: URL(string: NetworkConstants.placeholderURL))
+                        list.append(newBreed)
                         group.leave()
                     case .finished:
                         break
                     }
                 }, receiveValue: { [weak self] url in
                     guard self != nil else { return }
-                    list[dog] = url
+                    if let fullURL = URL(string: url) {
+                        let newBreed = Breed(name: dog, imageURL: fullURL)
+                        list.append(newBreed)
+                    } else {
+                        let newBreed = Breed(name: dog, imageURL: URL(string: NetworkConstants.placeholderURL))
+                        list.append(newBreed)
+                    }
                     group.leave()
                 }).store(in: &disposables)
         }

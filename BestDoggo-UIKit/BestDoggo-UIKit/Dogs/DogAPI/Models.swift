@@ -8,12 +8,7 @@
 
 import Foundation
 
-struct Breed: Codable {
+struct Breed: Hashable {
     let name: String?
     let imageURL: URL?
-}
-
-struct DogGallery: Codable {
-    let name: String?
-    let imageURLList: [URL?]?
 }

@@ -18,10 +18,16 @@ class BreedCollectionCell: UICollectionViewCell {
         }
     }
     
-    /// Once imageURL is assigned a value load image into the cell
-    var imageURL: String! {
+    var nameString: String! {
         didSet {
-            Nuke.loadImage(with: URL(string: imageURL)!, into: self.cellImage)
+            nameLabel.text = nameString
+        }
+    }
+    
+    /// Once imageURL is assigned a value load image into the cell
+    var imageURL: URL! {
+        didSet {
+            Nuke.loadImage(with: imageURL, into: self.cellImage)
         }
     }
     
@@ -70,20 +76,20 @@ class BreedCollectionCell: UICollectionViewCell {
         nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
     
-    func setup(with value: String?) {
-        /// Validate that the imageURL string is not nil
-        /// If so then use placeholderURL
-//        viewModel.didChange.sink(receiveValue: { value in
-//            if let url = value {
-//                self.imageURL = url
-//            } else {
-//                self.imageURL = NetworkConstants.placeholderURL
-//            }
-//        }).store(in: &subscribers)
-        if let url = value {
-            self.imageURL = url
-        } else {
-            self.imageURL = NetworkConstants.placeholderURL
-        }
-    }
+//    func setup(with value: String?) {
+//        /// Validate that the imageURL string is not nil
+//        /// If so then use placeholderURL
+////        viewModel.didChange.sink(receiveValue: { value in
+////            if let url = value {
+////                self.imageURL = url
+////            } else {
+////                self.imageURL = NetworkConstants.placeholderURL
+////            }
+////        }).store(in: &subscribers)
+////        if let url = value {
+////            self.imageURL = url
+////        } else {
+////            self.imageURL = NetworkConstants.placeholderURL
+////        }
+//    }
 }

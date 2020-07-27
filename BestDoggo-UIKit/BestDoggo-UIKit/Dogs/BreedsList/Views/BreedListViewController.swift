@@ -20,6 +20,7 @@ class BreedListViewController: UIViewController, UICollectionViewDelegate, UICol
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(BreedCollectionCell.self, forCellWithReuseIdentifier: "cell")
@@ -56,13 +57,12 @@ extension BreedListViewController {
     /// Collection View subscribes to the view model and populates
     /// cells with data when it is set in the view model
     fileprivate func setupDatasource() {
-        viewModel.didChange
+        viewModel.fullListDidChange
             .map{ $0 }
             .subscribe(collectionView.itemsSubscriber(cellIdentifier: "cell", cellType: BreedCollectionCell.self, cellConfig: { cell, indexPath, breed in
                 cell.backgroundColor = #colorLiteral(red: 0.120877615, green: 0.1208335194, blue: 0.1312041219, alpha: 1)
-                let cellViewModel = BreedCellViewModel(breed: breed, client: self.sharedAPIClientInstance)
-                cell.viewModel = cellViewModel
-                cell.setup()
+                cell.nameString = breed.name?.capitalizingFirstLetter()
+                cell.imageURL = breed.imageURL
                 cell.layer.cornerRadius = 25
             }))
         self.collectionView.reloadData()
@@ -80,7 +80,7 @@ extension BreedListViewController {
         let storyboard = UIStoryboard(name: "DogGalleryView", bundle: nil)
         
         let vc = storyboard.instantiateViewController(withIdentifier: "Gallery") as! DogGalleryViewController
-        vc.breed = viewModel.dogList?[indexPath.row]
+        vc.breed = viewModel.dogsFullList?[indexPath.row].name
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

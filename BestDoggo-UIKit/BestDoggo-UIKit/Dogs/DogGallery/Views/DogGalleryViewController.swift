@@ -17,6 +17,7 @@ class DogGalleryViewController: UIViewController, UICollectionViewDelegate, UICo
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
         cv.showsVerticalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(DogGalleryCell.self, forCellWithReuseIdentifier: "cell")
@@ -77,7 +78,7 @@ extension DogGalleryViewController {
                 
                 /// Validate that the imageURL string is not nil
                 /// If so then use placeholderURL
-                if let url = imageURL {
+                if let url = URL(string: imageURL!) {
                     cell.imageURL = url
                 } else {
                     cell.imageURL = NetworkConstants.placeholderURL

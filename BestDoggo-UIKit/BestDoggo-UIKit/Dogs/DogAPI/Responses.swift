@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DogBreedListResp: Decodable, Hashable {
+struct DogBreedListResp: Decodable {
     let status: String
     let message: [String: [String]]
 }

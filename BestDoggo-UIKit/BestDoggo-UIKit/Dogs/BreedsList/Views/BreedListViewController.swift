@@ -61,8 +61,6 @@ extension BreedListViewController {
             .map{ $0 }
             .subscribe(collectionView.itemsSubscriber(cellIdentifier: "cell", cellType: BreedCollectionCell.self, cellConfig: { cell, indexPath, breed in
                 cell.backgroundColor = #colorLiteral(red: 0.120877615, green: 0.1208335194, blue: 0.1312041219, alpha: 1)
-//                let cellViewModel = BreedCellViewModel(breed: breed.name ?? "Error", client: self.sharedAPIClientInstance)
-//                cell.viewModel = cellViewModel
                 cell.nameString = breed.name?.capitalizingFirstLetter()
                 cell.imageURL = breed.imageURL
                 cell.layer.cornerRadius = 25

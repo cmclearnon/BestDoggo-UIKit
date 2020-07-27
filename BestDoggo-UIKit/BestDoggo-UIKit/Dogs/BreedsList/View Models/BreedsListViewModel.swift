@@ -89,7 +89,7 @@ class BreedsListViewModel: ObservableObject, Identifiable {
                     guard self != nil else { return }
                     switch value {
                     case .failure:
-                        let newBreed = Breed(name: dog, imageURL: URL(string: NetworkConstants.placeholderURL))
+                        let newBreed = Breed(name: dog, imageURL: NetworkConstants.placeholderURL)
                         list.append(newBreed)
                         group.leave()
                     case .finished:
@@ -101,7 +101,7 @@ class BreedsListViewModel: ObservableObject, Identifiable {
                         let newBreed = Breed(name: dog, imageURL: fullURL)
                         list.append(newBreed)
                     } else {
-                        let newBreed = Breed(name: dog, imageURL: URL(string: NetworkConstants.placeholderURL))
+                        let newBreed = Breed(name: dog, imageURL: NetworkConstants.placeholderURL)
                         list.append(newBreed)
                     }
                     group.leave()

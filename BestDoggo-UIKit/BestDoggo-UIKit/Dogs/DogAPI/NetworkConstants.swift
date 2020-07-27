@@ -9,5 +9,9 @@
 import Foundation
 
 struct NetworkConstants {
-    static let placeholderURL = "https://complianz.io/wp-content/uploads/2019/03/placeholder-300x202.jpg"
+    static let placeholderURL: URL = {
+        let urlString = "https://complianz.io/wp-content/uploads/2019/03/placeholder-300x202.jpg"
+        let fullURL = URL(string: urlString)
+        return fullURL!
+    }()
 }

@@ -11,13 +11,8 @@ import Combine
 import Nuke
 
 class BreedCollectionCell: UICollectionViewCell {
-    var subscribers = Set<AnyCancellable>()
-    var viewModel: BreedCellViewModel! {
-        didSet {
-            nameLabel.text = viewModel.breed.capitalizingFirstLetter()
-        }
-    }
     
+    /// Once nameString is assigned a value load string into the cell
     var nameString: String! {
         didSet {
             nameLabel.text = nameString
@@ -75,21 +70,4 @@ class BreedCollectionCell: UICollectionViewCell {
         nameLabel.trailingAnchor.constraint(equalTo:contentView.trailingAnchor, constant: -10).isActive = true
         nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
-    
-//    func setup(with value: String?) {
-//        /// Validate that the imageURL string is not nil
-//        /// If so then use placeholderURL
-////        viewModel.didChange.sink(receiveValue: { value in
-////            if let url = value {
-////                self.imageURL = url
-////            } else {
-////                self.imageURL = NetworkConstants.placeholderURL
-////            }
-////        }).store(in: &subscribers)
-////        if let url = value {
-////            self.imageURL = url
-////        } else {
-////            self.imageURL = NetworkConstants.placeholderURL
-////        }
-//    }
 }

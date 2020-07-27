@@ -78,7 +78,7 @@ extension DogGalleryViewController {
                 
                 /// Validate that the imageURL string is not nil
                 /// If so then use placeholderURL
-                if let url = imageURL {
+                if let url = URL(string: imageURL!) {
                     cell.imageURL = url
                 } else {
                     cell.imageURL = NetworkConstants.placeholderURL

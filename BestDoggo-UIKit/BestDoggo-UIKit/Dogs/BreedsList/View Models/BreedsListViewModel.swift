@@ -30,16 +30,18 @@ class BreedsListViewModel: ObservableObject, Identifiable {
     private var disposables = Set<AnyCancellable>()
     
     private let client: APIClient
-    
+//    public var connectionIsAvailable: Bool
+//    
     init(client: APIClient, scheduler: DispatchQueue = DispatchQueue(label: "BreedListViewModelThread")) {
         self.client = client
+//        self.connectionIsAvailable = client.connectionIsAvailable
         self.fetchDogBreeds()
     }
     
     func fetchDogBreeds() {
         client.listAllBreeds()
             .mapError({ (error) -> APIError in
-                return .network(description: "Error fetching breed list from API")
+                return .network(description: "Error fetching breed list from API: \(error.localizedDescription)")
             })
             .map(\.message.keys)
             .receive(on: DispatchQueue.main)

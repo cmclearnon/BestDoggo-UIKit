@@ -15,11 +15,15 @@ protocol APICallable {
     func getRandomImageURLs(for breed: String, amount: Int) -> AnyPublisher<DogImageResp<[String]>, APIError>
 }
 
-class APIClient {
+class APIClient: NSObject {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
         self.session = session
+//        let config = URLSessionConfiguration.default
+//        config.waitsForConnectivity = true
+//        config.timeoutIntervalForResource = 5
+//        self.session = URLSession(configuration: config)
     }
 }
 
@@ -47,7 +51,7 @@ extension APIClient: APICallable {
 
         /// URLSession.dataTaskPublisher for fetching Dog API data
         /// Returns either tuple (Data, URLResponse) or URLError
-        return URLSession.shared.dataTaskPublisher(for: URLRequest(url: url))
+        return session.dataTaskPublisher(for: URLRequest(url: url))
             /// Cast error as APIError
             .mapError { error -> APIError in
                 return .network(description: "Network error: Please check internet connection")

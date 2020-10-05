@@ -19,11 +19,11 @@ class APIClient: NSObject {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
-        //self.session = session
-        let config = URLSessionConfiguration.default
-        config.waitsForConnectivity = true
-        config.timeoutIntervalForResource = 5
-        self.session = URLSession(configuration: config)
+        self.session = session
+//        let config = URLSessionConfiguration.default
+//        config.waitsForConnectivity = true
+//        config.timeoutIntervalForResource = 5
+//        self.session = URLSession(configuration: config)
     }
 }
 

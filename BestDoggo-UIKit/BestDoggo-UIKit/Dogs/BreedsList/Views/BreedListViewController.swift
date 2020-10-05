@@ -39,25 +39,27 @@ class BreedListViewController: UIViewController, UICollectionViewDelegate, UICol
         return lb
     }()
     
-    fileprivate let refreshButton: UIButton = {
-        let button = RoundedButton()
+    fileprivate let refreshButton: RefreshUIButton = {
+        let button = RefreshUIButton()
         button.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         button.setTitle("Refresh", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(refreshPressed(sender:)), for: .touchUpInside)
+        button.layer.cornerRadius = 15
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     @objc func refreshPressed(sender: UIButton!) {
+        self.refreshButton.showLoading()
         self.viewModel.fetchDogBreeds()
+        self.refreshButton.hideLoading()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         statusDidChange(status: networkHandler.currentStatus)
         networkHandler.addObserver(observer: self)
-        self.collectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -98,6 +100,9 @@ class BreedListViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func statusDidChange(status: NWPath.Status) {
+        if self.collectionView.isHidden == true {
+            self.viewModel.fetchDogBreeds()
+        }
         self.collectionView.isHidden = status == .satisfied ? false : true
         self.connectionWarningMessageView.isHidden = status == .satisfied ? true : false
         self.refreshButton.isHidden = status == .satisfied ? true : false
